@@ -41,9 +41,9 @@ def choose():
         except SystemExit, e:
             print(e)
 
-            # com o nivel selecionado aqui que todo o jogo acontece ele terá no total de 5 tentativas
+            # com o nivel selecionado aqui que todo o jogo acontece ele terá no total de 4 tentativas
             # se ele acertar o primeiro blank ele passará para a próxima senão vai ficar no mesmo blank
-            # até ele acretar ou as sua tentativas acabarem.
+            # até ele acertar ou as sua tentativas acabarem.
 
 
 def play(string, answer, replacement):
