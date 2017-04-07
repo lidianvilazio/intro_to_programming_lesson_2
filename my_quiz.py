@@ -27,18 +27,23 @@ def choose():
         print "That's not a option!!!! \nPlease try it again!!!"
         return choose()
     if level == "easy":
-        print "\nYou choose easy!" + "\n" + sample_easy
-        print "Congratulations!" + play(sample_easy, answer_easy, parts_of_speech)
+        print "\nYou choose easy!" + "\n\n" + sample_easy
+        print play(sample_easy, answer_easy, parts_of_speech)
     elif level == "medium":
-        print "\nYou choose medium!" + "\n" + sample_medium
-        print "Congratulations!" + play(sample_medium, answer_medium, parts_of_speech)
+        print "\nYou choose medium!" + "\n\n" + sample_medium
+        print play(sample_medium, answer_medium, parts_of_speech)
     elif level == "hard":
-        print "\nYou choose hard!" + "\n" + sample_hard
-        print "Congratulations!" + play(sample_hard, answer_hard, parts_of_speech)
+        print "\nYou choose hard!" + "\n\n" + sample_hard
+        print play(sample_hard, answer_hard, parts_of_speech)
+    if __name__ == "__main__":
+        try:
+            choose()
+        except SystemExit, e:
+            print(e)
 
-# com o nivel selecionado aqui que todo o jogo acontece ele terá no total de 5 tentativas
-# se ele acertar o primeiro blank ele passará para a próxima senão vai ficar no mesmo blank
-# até ele acretar ou as sua tentativas acabarem.
+            # com o nivel selecionado aqui que todo o jogo acontece ele terá no total de 5 tentativas
+            # se ele acertar o primeiro blank ele passará para a próxima senão vai ficar no mesmo blank
+            # até ele acretar ou as sua tentativas acabarem.
 
 
 def play(string, answer, replacement):
@@ -46,16 +51,16 @@ def play(string, answer, replacement):
     tries = 5
     while i != len(answer):
         user_input = raw_input("What is the answer to blank " + replacement[i] + '?')
-        if tries == 1:
-            print "Game Over"
-            break
-        elif user_input != answer[i]:
+        if user_input != answer[i]:
             tries -= 1
-            print "Sorry!!! \nTry again you have %d try left!" % (tries)
+            if tries == 1:
+                print "Game Over"
+                break
+            print "Sorry!!! \nTry again you have %d try left!" % (tries - 1)
         else:
             tries = 5
             string = string.replace(replacement[i], answer[i])
-            print ":) \nCongratulations!\n" + string
+            print ":) \nCongratulations!\n\n\n\n" + string
             i += 1
     return string
 
