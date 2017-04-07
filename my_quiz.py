@@ -48,17 +48,17 @@ def choose():
 
 def play(string, answer, replacement):
     i = 0
-    tries = 5
+    tries = 4
     while i != len(answer):
         user_input = raw_input("What is the answer to blank " + replacement[i] + '?')
         if user_input != answer[i]:
             tries -= 1
-            if tries == 1:
+            if tries == 0:
                 print "Game Over"
                 break
-            print "Sorry!!! \nTry again you have %d try left!" % (tries - 1)
+            print "Sorry!!! \nTry again you have %d try left!" % (tries)
         else:
-            tries = 5
+            tries = 4
             string = string.replace(replacement[i], answer[i])
             print ":) \nCongratulations!\n\n\n\n" + string
             i += 1
